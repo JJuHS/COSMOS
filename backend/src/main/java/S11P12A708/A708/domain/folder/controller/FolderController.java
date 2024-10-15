@@ -1,7 +1,6 @@
 package S11P12A708.A708.domain.folder.controller;
 
 import S11P12A708.A708.domain.folder.request.FolderCreateRequest;
-import S11P12A708.A708.domain.folder.response.AllFolderInfoResponse;
 import S11P12A708.A708.domain.folder.response.FolderInfoResponse;
 import S11P12A708.A708.domain.folder.response.FolderResponse;
 import S11P12A708.A708.domain.folder.service.FolderService;
@@ -24,13 +23,6 @@ public class FolderController {
             @PathVariable("teamId") Long teamId,
             @PathVariable("folderId") Long folderId) {
         final FolderInfoResponse response = folderService.getFolderInfo(teamId, folderId);
-        return new ResponseEntity<>(response, HttpStatus.OK);
-    }
-
-    @GetMapping("/teams/{teamId}/allFolders")
-    public ResponseEntity<AllFolderInfoResponse> getAllFolders(
-            @PathVariable("teamId") Long teamId) {
-        final AllFolderInfoResponse response = folderService.getAllFolderInfo(teamId);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 

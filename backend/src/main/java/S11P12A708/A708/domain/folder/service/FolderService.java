@@ -7,7 +7,6 @@ import S11P12A708.A708.domain.folder.exception.FolderNotFoundException;
 import S11P12A708.A708.domain.folder.repository.FolderRepository;
 import S11P12A708.A708.domain.folder.repository.query.FolderQueryRepository;
 import S11P12A708.A708.domain.folder.request.FolderCreateRequest;
-import S11P12A708.A708.domain.folder.response.AllFolderInfoResponse;
 import S11P12A708.A708.domain.folder.response.FolderInfoResponse;
 import S11P12A708.A708.domain.folder.response.FolderResponse;
 import S11P12A708.A708.domain.team.entity.Team;
@@ -15,8 +14,6 @@ import S11P12A708.A708.domain.team.exception.TeamNotFoundException;
 import S11P12A708.A708.domain.team.repository.TeamRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
-import org.springframework.cache.annotation.CacheEvict;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -27,15 +24,6 @@ public class FolderService {
     private final FolderRepository folderRepository;
     private final FolderQueryRepository folderQueryRepository;
     private final TeamRepository teamRepository;
-
-    @Cacheable(value = "allFoldersCache", key = "#teamId")
-    public AllFolderInfoResponse getAllFolderInfo(Long teamId) {
-        final Team team = teamRepository.findById(teamId).orElseThrow(TeamNotFoundException::new);
-        final Folder folder = folderQueryRepository.findRootFolderByTeam(teamId).orElseThrow(FolderNotFoundException::new);
-        validateTeamFolder(folder, team);
-
-        return AllFolderInfoResponse.fromFolder(folder);
-    }
 
     public FolderInfoResponse getFolderInfo(Long teamId, Long folderId) {
         if(folderId == 0) return getRootFolderInfo(teamId);
@@ -58,7 +46,6 @@ public class FolderService {
         return FolderInfoResponse.of(folder);
     }
 
-    @CacheEvict(value = "allFoldersCache", key = "#teamId")
     public FolderResponse createFolder(Long teamId, FolderCreateRequest request) {
         final Folder parentFolder = folderRepository.findById(request.getParentId()).orElseThrow(FolderNotFoundException::new);
         final Team team = teamRepository.findById(teamId).orElseThrow(TeamNotFoundException::new);
@@ -66,13 +53,12 @@ public class FolderService {
         validateDuplicate(parentFolder, request.getFolderName());
 
         final Folder newFolder = requestToFolder(request, team, parentFolder);
+
         folderRepository.save(newFolder);
 
         return FolderResponse.fromFolder(newFolder);
     }
 
-
-    @CacheEvict(value = "allFoldersCache", key = "#teamId")
     public void deleteFolder(Long teamId, Long folderId) {
         final Folder folder = folderRepository.findById(folderId).orElseThrow(FolderNotFoundException::new);
         final Team team = teamRepository.findById(teamId).orElseThrow(TeamNotFoundException::new);

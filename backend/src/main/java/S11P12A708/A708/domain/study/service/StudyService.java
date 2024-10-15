@@ -20,7 +20,6 @@ import S11P12A708.A708.domain.team.repository.TeamRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.stereotype.Service;
 
 @Slf4j
@@ -37,7 +36,6 @@ public class StudyService {
     private final ProblemRepository problemRepository;
     private final ProblemUserRepository problemUserRepository;
 
-    @CacheEvict(value = "allFoldersCache", key = "#teamId")
     public void createStudy(Long teamId, StudyCreateRequest request) {
         final Team team = teamRepository.findById(teamId).orElseThrow(TeamNotFoundException::new);
 
@@ -75,8 +73,6 @@ public class StudyService {
                 .anyMatch(subFolder -> yearMonthFolderName.equals(subFolder.getName()));
     }
 
-
-    @CacheEvict(value = "allFoldersCache", key = "#teamId")
     public void deleteStudy(Long teamId, Long studyId) {
         final Team team = teamRepository.findById(teamId).orElseThrow(TeamNotFoundException::new);
         final Study study = studyRepository.findById(studyId).orElseThrow(StudyNotFoundException::new);
