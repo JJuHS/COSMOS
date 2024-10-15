@@ -1,0 +1,24 @@
+.participant-data {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.participant-data p {
+  background: #f8f8f8;
+  margin: 0;
+  padding: 0 5px;
+  color: #777777;
+  font-weight: bold;
+  border-bottom-right-radius: 4px;
+}
+
+/* .gray-screen {
+  width: 100%;
+  height: 100%;
+  background-color: gray;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+} */

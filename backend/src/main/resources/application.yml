@@ -1,0 +1,40 @@
+spring:
+  application:
+    name: A708
+  mail:
+    host: smtp.gmail.com
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+          ssl:
+            enable: true
+            trust: smtp.gmail.com
+
+  data:
+    redis:
+      lettuce:
+        pool:
+          max-active: 10
+          max-idle: 10
+          min-idle: 2
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+server:
+  servlet:
+    context-path: /api
+  port: '8080'
+
+jwt:
+  access:
+    expiration: 3600000
+  refresh:
+    expiration: 604800000
+
+app:
+  expired-time: 5
+

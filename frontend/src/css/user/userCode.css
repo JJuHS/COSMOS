@@ -1,0 +1,65 @@
+#code-box {
+  margin: 50px; /* 박스 주변에 50px의 여백을 줍니다. */
+  display: flex; /* 박스 내부의 아이템들을 플렉스 박스 레이아웃으로 배치합니다. */
+  align-items: flex-start; /* 아이템들을 시작점 기준으로 정렬합니다. */
+  flex-wrap: wrap; /* 박스 내부 아이템들이 줄 바꿈되도록 설정합니다. */
+}
+
+#code-list {
+  display: flex; /* 목록을 플렉스 박스로 설정하여 가로로 나열합니다. */
+  flex-wrap: wrap; /* 목록 항목들이 자동으로 줄 바꿈되도록 설정합니다. */
+  gap: 16px; /* 각 항목 사이에 16px의 간격을 줍니다. */
+  font-size: 16px; /* 텍스트의 기본 크기를 16px로 설정합니다. */
+  color: #2f95dc; /* 텍스트 색상을 파란색으로 설정합니다. */
+  width: 100%; /* 리스트가 부모 컨테이너의 너비를 가득 채우도록 설정합니다. */
+  justify-content: space-between; /* 아이템들이 양 끝에 고르게 배치되도록 설정합니다. */
+  padding: 0;
+  font-size: 22px;
+}
+
+#code-list ul {
+  display: flex; /* 리스트 항목들을 플렉스 박스로 설정하여 가로로 나열합니다. */
+  flex-wrap: wrap; /* 리스트 항목들이 줄 바꿈되도록 설정합니다. */
+  padding: 0; /* 기본 패딩을 제거하여 깔끔하게 만듭니다. */
+  margin: 0; /* 기본 마진을 제거하여 깔끔하게 만듭니다. */
+  list-style: none; /* 기본 목록 스타일(불릿포인트)을 제거합니다. */
+  width: 100%; /* 리스트가 부모 컨테이너의 너비를 가득 채우도록 설정합니다. */
+  justify-content: space-between; /* 리스트 항목들이 가로로 고르게 배치되도록 설정합니다. */
+}
+
+/* 각 문제 항목의 스타일을 설정합니다. */
+#code-list li {
+  flex: 1 1 calc(20% - 16px); /* 각 항목이 20%의 너비를 차지하며, 5개가 한 줄에 표시됩니다. */
+  padding: 10px; /* 항목 내부에 10px의 패딩을 줍니다. */
+  text-align: center; /* 텍스트를 왼쪽 정렬합니다. */
+  white-space: nowrap; /* 텍스트를 한 줄로만 표시되도록 설정합니다. */
+  cursor: pointer; /* 항목에 마우스를 올리면 클릭 가능하다는 표시로 커서를 변경합니다. */
+}
+
+/* 반응형 디자인을 위해 작은 화면에서의 조정을 합니다. */
+@media (max-width: 1024px) {
+  #code-list li {
+    flex: 1 1 calc(33.33% - 16px); /* 화면 너비가 1024px 이하일 때는 한 줄에 3개의 항목을 표시합니다. */
+  }
+}
+
+@media (max-width: 768px) {
+  #code-list li {
+    flex: 1 1 calc(50% - 16px); /* 화면 너비가 768px 이하일 때는 한 줄에 2개의 항목을 표시합니다. */
+  }
+}
+
+@media (max-width: 480px) {
+  #code-list li {
+    flex: 1 1 calc(100% - 16px); /* 화면 너비가 480px 이하일 때는 한 줄에 1개의 항목을 표시합니다. */
+  }
+}
+
+/* 문제 없음 메시지 스타일 */
+#no-problem {
+  margin-top: 5px; 
+  text-decoration: none;
+  font-size: 16px;
+  color: #d32f2f; /* 문제 없음 텍스트 색상 */
+  text-align: center; /* 텍스트를 중앙 정렬합니다. */
+}

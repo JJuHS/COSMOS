@@ -1,0 +1,124 @@
+/* 컨테이너 */
+.info-container {
+  background: linear-gradient(180deg, #0d0220 0%, #0d0220de 100%);
+  width: 100vw; 
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden; /* 넘치는 내용 숨김 */
+  box-sizing: border-box; /* 모든 요소에 box-sizing 적용 */
+  margin: 20px;
+  padding: 0;
+  color: #fff;
+}
+
+/* 타이틀 */
+.info-title {
+  font-size: 30px;
+  font-weight: 500;
+  text-align: center;
+  padding: 8px;
+}
+
+.info-group {
+  width: 600px;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.info-box {
+  display: flex;
+  padding: 8px;
+  align-items: center;
+}
+
+.info-label {
+  width: 150px; /* 고정 너비 */
+  font-size: 24px; /* 폰트 크기 */
+  text-align: end;
+}
+
+.info-contents {
+  width: 350px;
+  margin-left: 20px;
+  padding: 4px;
+  font-size: 24px;
+  overflow: hidden;
+  overflow-x: auto;
+}
+
+.info-input {
+  width: 350px;
+  margin-left: 20px;
+  padding: 4px;
+  background-color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 24px; /* 폰트 크기 */
+  color: #000;
+}
+
+#info-description {
+  width: 350px;
+  height: 110px;
+  margin-left: 20px;
+  padding: 4px;
+  font-size: 24px;
+  overflow: hidden; /* 넘치는 내용 숨김 */
+  white-space: pre-wrap; /* 자동 줄바꿈 */
+  word-wrap: break-word; /* 단어 단위로 줄바꿈 */
+  overflow-y: auto;
+}
+
+#info-textarea {
+  width: 350px;
+  height: 110px;
+  margin-left: 20px;
+  padding: 4px;
+  background-color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 24px; /* 폰트 크기 */
+  color: #000;
+  resize: none;
+  white-space: normal; /* 자동 줄바꿈 */
+  word-wrap: break-word; /* 단어가 넘치면 줄바꿈 */
+}
+
+/* 버튼 스타일 */
+.info-btn-group {
+  display: flex;
+  justify-content: center;
+  padding: 8px;
+  gap: 2%; /* 버튼 사이 간격 */
+}
+
+.info-btn {
+  background: linear-gradient(
+    90deg,
+    #1e0549 0%,
+    #290666 0.01%,
+    #470baf 100%
+  );
+  width: 150px;
+  height: 50px;
+  border-radius: 50px;
+  text-align: center;
+  line-height: 50px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.info-btn:hover {
+  border: 1px solid #fff;
+}
+
+/* 소셜 아이콘 스타일 */
+.info-type-icon {
+  margin-right: 8px;
+  width: 20px;
+  height: 20px;
+}

@@ -1,0 +1,270 @@
+.conference {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  padding: 10px;
+  min-width: 800px;
+  min-height: 600px;
+}
+
+.video {
+  display: flex; /* 플렉스 박스 사용 */
+  justify-content: center; /* 가로 방향 중앙 정렬 */
+  align-items: center; /* 세로 방향 중앙 정렬 */
+  flex: 0.2;
+  width: 100%; /* 가로 폭을 부모 컨테이너에 맞춤 */
+  margin: 0 auto;
+  /* transition: all 0.3s ease-in-out; */
+  overflow: hidden;
+}
+
+video {
+  width: 100%;
+  /* display: hidden; */
+}
+
+.video-container {
+  position: relative;
+  aspect-ratio: 16/9;
+  border-radius: 6px;
+  overflow: hidden;
+  margin: 10px 20px;
+  height: 100px;
+  cursor: pointer;
+}
+
+.video.open {
+  max-height: 100%;
+}
+
+.video.closed {
+  max-height: 0;
+}
+
+.code-paint-space {
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.right-space {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: #0e253d;
+  color: white; /* 텍스트 색상 */
+  padding: 10px; /* 내부 여백 */
+  border-radius: 8px; /* 모서리 둥글게 */
+}
+
+.paint-upper-space {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.paint-space {
+  display: flex;
+  flex: 1;
+  position: relative;
+  background-color: #fff;
+  align-items: center;
+  border-radius: 5px;
+  color: black;
+  align-items: center;
+  justify-content: center;
+}
+
+.paint-space video {
+  overflow: hidden;
+}
+
+.paint-lower-space {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.code-lower-space {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.code-buttons {
+  display: flex;
+}
+
+.compile-button {
+  display: flex;
+}
+
+.button {
+  margin-right: 10px;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 5px;
+  background-color: #2f5074;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.toggle {
+  border-radius: 20px;
+  padding: 4px 12px;
+}
+
+.button:hover {
+  background-color: #3a6695;
+}
+
+.button-share {
+  margin-right: 10px;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  background-color: #0953a2;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.button-share:hover {
+  background-color: #1664b7;
+}
+
+.button-quit {
+  margin-right: 10px;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  background-color: #be1515;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.button-quit:hover {
+  background-color: #ff1f1f;
+}
+
+.share-quit-buttons {
+  display: flex;
+}
+
+.chat-modal {
+  position: absolute;
+  top: 57px;
+  right: 15px;
+  width: 100%;
+  max-width: 400px;
+  height: 0px;
+  background-color: white;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+  overflow: hidden;
+  transition: height 0.3s ease-in-out;
+  z-index: 999;
+}
+
+.chat-modal.open {
+  height: 450px;
+}
+
+.chat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #0e253d;
+  color: white;
+  border-radius: 5px 5px 0px 0px;
+}
+
+.chat-body {
+  flex: 1;
+  padding: 10px;
+  overflow-y: auto;
+  color: black;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.chat-body .message.current-user {
+  align-self: flex-end; /* 오른쪽 정렬 */
+  text-align: right; /* 텍스트 오른쪽 정렬 */
+}
+
+.chat-footer {
+  display: flex;
+  padding: 10px;
+  border-top: 1px solid #ddd;
+}
+
+.chat-footer textarea {
+  flex: 1;
+  padding: 5px;
+  margin-right: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  height: 36px;
+  resize: none;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  word-wrap: break-word;
+}
+
+.chat-footer button {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  background-color: #0e253d;
+  color: white;
+  cursor: pointer;
+}
+
+.chat-footer button:hover {
+  background-color: #3a6695;
+}
+
+.chat-button {
+  position: relative;
+}
+
+.new-message-indicator {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background-color: red;
+  border-radius: 50%;
+  bottom: -3px;
+  right: -4px;
+}
+
+.code-select {
+  margin-left: 10px;
+  padding: 6px 12px;
+  /* border: 1px solid #ddd; */
+  border-radius: 5px;
+  background-color: #2f5074;
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.code-select:hover {
+  border: 1px solid #ddd;
+  /* background-color: #3a6695; */
+}
+
+.button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
